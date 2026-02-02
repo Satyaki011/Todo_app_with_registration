@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}To-Do App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>📝 My To-Do App</h1>
+        <nav>
+            <a href="{{ url_for('tasks.tasks_list') }}">Home</a>
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('auth.logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">Login</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+<div class="alerts-container">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% for category, message in messages %}
+            <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endwith %}
+</div>
+
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 My Flask To-Do App</p>
+    </div>
+</footer>
+
+<script>
+    // Auto-hide flash messages after 5 seconds
+    document.addEventListener('DOMContentLoaded', function() {
+        const flashMessages = document.querySelectorAll('.flash-message');
+        flashMessages.forEach(function(message) {
+            setTimeout(function() {
+                message.classList.add('fade-out');
+                setTimeout(function() {
+                    message.style.display = 'none';
+                }, 500); // Wait for fade-out animation to complete
+            }, 5000); // 5 seconds
+        });
+    });
+</script>
+
+</body>
+</html>

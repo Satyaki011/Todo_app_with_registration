@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Tasks - To-Do App{% endblock %}
+{% block content %}
+<div class="tasks-container">
+    <h2>Your Tasks</h2>
+    
+    <!-- Add Task Form -->
+    <div class="add-task-section">
+        <form method="POST" action="{{ url_for('tasks.add_task') }}" class="add-task-form">
+            <input type="text" name="title" placeholder="New Task" class="task-input" required>
+            <button type="submit" class="btn btn-add">Add</button>
+        </form>
+    </div>
+
+    <!-- Clear All Tasks Button -->
+    {% if tasks %}
+    <form method="POST" action="{{ url_for('tasks.clear_tasks') }}" style="margin-bottom: 20px;">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to clear all tasks?');">Clear All Tasks</button>
+    </form>
+    {% endif %}
+
+    <!-- Tasks Table -->
+    {% if tasks %}
+    <div class="tasks-table-wrapper">
+        <table class="tasks-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Task</th>
+                    <th>Status</th>
+                    <th>Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr class="task-row {% if task.status == 'Done' %}completed{% endif %}">
+                    <td class="task-number">{{ loop.index }}</td>
+                    <td class="task-title">{{ task.title }}</td>
+                    <td class="task-status">
+                        {% if task.status == 'Done' %}
+                            <span class="status-badge status-done">Done</span>
+                        {% else %}
+                            <span class="status-badge status-pending">Pending</span>
+                        {% endif %}
+                    </td>
+                    <td class="task-action">
+                        <form method="POST" action="{{ url_for('tasks.update_task', task_id=task.id) }}" style="display: inline;">
+                            <button type="submit" class="btn btn-next">
+                                {% if task.status == 'Done' %}Undo{% else %}Next{% endif %}
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="no-tasks">No tasks yet. Add one to get started!</p>
+    {% endif %}
+</div>
+{% endblock %}

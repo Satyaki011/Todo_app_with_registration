@@ -1,0 +1,486 @@
+body{
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container{
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    padding: 40px 0;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header nav a {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+nav{
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+nav a:hover{
+    color: #ffd700;
+}
+
+footer{
+    text-align: center;
+    padding: 15px 0;
+    background-color: #343a40;
+    color: #ccc;
+    font-size: 14px;
+    margin-top: 60px;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}
+
+footer p{
+    margin: 0;
+}
+
+.flash-message {
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: block;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: slideIn 0.3s ease-in;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.flash-message.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+.alerts-container {
+    position: relative;
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash-message.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.flash-message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+
+/* This centers the login box and gives it the tutorial "card" look */
+.login-box {
+    background: white;
+    max-width: 400px;
+    margin: -40px auto 40px; /* The -40px pulls it up into the blue header */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* This adds the shadow */
+    position: relative;
+    z-index: 10;
+}
+
+.login-box h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.auth-link p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.auth-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Style the form groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Style the input fields */
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Important so padding doesn't make it too wide */
+}
+
+/* Style the blue button */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+.task-box{
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.task-form{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}   
+
+.task-form input[type="text"]{
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}   
+.task-form button{
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+.task-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.task-table th, .task-table td{
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.task-table th{
+    background-color: #f2f2f2;
+}
+
+.btn-delete{
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-delete:hover{
+    background-color: #c82333;
+}
+
+.badge{
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+}
+
+.badge-pending{
+    background-color: #ffc107;
+}
+.badge-working{
+    background-color: #28a745;
+}
+.badge-done{
+    background-color: #28a745;
+}
+
+.btn-small{
+    font-size: 12px;
+    padding: 6px 12px;
+    border: none;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-small:hover{
+    background-color: #495057;
+}
+
+.btn-clear{
+    background-color: #dc3545;
+    margin-bottom: 10px;
+}
+.btn-clear:hover{
+    background-color: #c82333;
+}
+
+/* Tasks Container Styling */
+.tasks-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tasks-container h2 {
+    text-align: left;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+/* Add Task Section */
+.add-task-section {
+    margin-bottom: 20px;
+}
+
+.add-task-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.task-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.task-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.btn-add {
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    width: 100%;
+    padding: 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Tasks Table */
+.tasks-table-wrapper {
+    overflow-x: auto;
+}
+
+.tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.tasks-table thead {
+    background-color: #f0f0f0;
+}
+
+.tasks-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+}
+
+.tasks-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #555;
+}
+
+.task-row {
+    transition: background-color 0.2s ease;
+}
+
+.task-row:hover {
+    background-color: #f9f9f9;
+}
+
+.task-row.completed {
+    opacity: 0.7;
+}
+
+.task-number {
+    font-weight: 600;
+    color: #666;
+    width: 50px;
+}
+
+.task-title {
+    font-weight: 500;
+    color: #333;
+}
+
+.task-row.completed .task-title {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.task-status {
+    text-align: center;
+    width: 120px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+}
+
+.status-done {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-pending {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.task-action {
+    text-align: center;
+    width: 100px;
+}
+
+.btn-next {
+    padding: 8px 16px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-next:hover {
+    background-color: #5a6268;
+}
+
+.no-tasks {
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    padding: 40px 20px;
+}
